@@ -6,3 +6,5 @@
 *.xml
 
 .idea/vcs.xml
+
+__pycache__/config.cpython-36.pyc
