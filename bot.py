@@ -1,7 +1,8 @@
 ## -*- coding: utf-8 -*-
 import telebot
+import config
 
-TOKEN = '396424405:AAHQZxMEkBdsAkFk2BxSgJBKEQaaoWtjuhc'
+TOKEN = config.token
 bot = telebot.TeleBot(TOKEN)
 
 def log(message, answer):
@@ -103,6 +104,8 @@ def handle_text(message):
 
     elif message.text == "Back" + u'\U0001f519':
         handle_start(message)
+
+
     # End of Main menu categories
 
     #elif message.text ==
