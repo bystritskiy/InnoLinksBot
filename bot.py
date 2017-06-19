@@ -1,104 +1,110 @@
-# -*- coding: utf-8 -*-
+## -*- coding: utf-8 -*-
 import telebot
-import config
 
-
-token = config.token
-bot = telebot.TeleBot(token)
-
-# bot.send_message(57344339, "test")
-# upd = bot.get_updates()
-# print(upd)
-
-# last_upd = upd [-1]
-# message_from_user = last_upd.message
-# print(message_from_user)
-
-print(bot.get_me())
-
+TOKEN = '396424405:AAHQZxMEkBdsAkFk2BxSgJBKEQaaoWtjuhc'
+bot = telebot.TeleBot(TOKEN)
 
 def log(message, answer):
-    print("\n -----")
     from datetime import datetime
     print(datetime.now())
-    print("Сообщение от {0} {1}. (id = {2}) \n Текст - {3}".format(message.from_user.first_name,
-                                                                   message.from_user.last_name,
-                                                                   str(message.from_user.id), message.text))
-    print(answer)
-user_markup = telebot.types.ReplyKeyboardMarkup(True, True)
+    print("Сообщение от {0} {1}. (id={2})".format(message.from_user.first_name,
+                                                                 message.from_user.last_name,
+                                                                 str(message.from_user.id),
+                                                                 message.text))
+    print(answer + '\n')
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
-
-    user_markup.row('Главное', 'Транспорт')
-    user_markup.row('Медицина', 'Еда')
-    user_markup.row('Спорт', 'Развлечения')
-    user_markup.row('Инфраструктура', 'Услуги')
-    user_markup.row('Кружки, секции и чаты')
-    bot.send_message(message.from_user.id, 'Добро пожаловать!', reply_markup=user_markup)
-
-#@bot.message_handler(commands=['stop'])
-#def handle_start(message):
-#    hide_markup = telebot.types.ReplyKeyboardRemove()
-#    bot.send_message(message.from_user.id, '', reply_markup=hide_markup)
-
+    user_markup_main_menu = telebot.types.ReplyKeyboardMarkup()
+    user_markup_main_menu.row('Главное' + u'\U00002757', 'Транспорт' + u'\U0001f68c')
+    user_markup_main_menu.row('Медицина' + u'\U0001f691', 'Еда' + u'\U0001F37D')
+    user_markup_main_menu.row('Спорт' + u'\U0001f6b4', 'Развлечения' + u'\U0001f3a5')
+    user_markup_main_menu.row('Инфраструктура' + u'\U0001f3d9', 'Услуги' + u'\U0001f465')
+    user_markup_main_menu.row('Кружки, секции, чаты' + u'\U0001f3a8')
+    log(message, message.text)
+    bot.send_message(message.chat.id, 'Выберите одну из категорий', reply_markup=user_markup_main_menu)
 
 @bot.message_handler(commands=['help'])
-def handle_tex(message):
-    bot.send_message(message.chat.id, "Я храню всю важную информацию о моем любимом городе Иннополисе")
-
+def command_handler(message):
+    bot.send_message(message.chat.id, "Я собираюсь помочь тебе")
 
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
-    answer = "Я не настолько крут, чтобы обрабатывать все запросы"
-    if message.text == "Еда":
-        user_markup2 = telebot.types.ReplyKeyboardMarkup(True, True)
-        user_markup2.row('Общепит', 'Кафе и бары')
-        user_markup2.row('Продуктовые магазины', 'Back')
-        answer = "Вы находитесь в категории, посвященной питанию в нашем городе"
+    # Main menu categories
+    if message.text == 'Главное' + u'\U00002757':
+        answer = "Вы находитесь в категории, в которой находятся самые необходимые ссылки и информация в нашем городе. \nВыберите следующую категорию"
+        user_markup_main = telebot.types.ReplyKeyboardMarkup()
+        user_markup_main.row('Back' + u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_main)
 
-        bot.send_message(message.from_user.id, answer , reply_markup=user_markup2)
-        log(message, answer)
+    elif message.text == 'Транспорт' + u'\U0001f68c':
+        answer = "Вы находитесь в категории, посвященной транспорту в нашем городе."
+        user_markup_transport = telebot.types.ReplyKeyboardMarkup()
+        user_markup_transport.row('Back' + u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_transport)
 
+    elif message.text == 'Медицина' + u'\U0001f691':
+        answer = "Вы находитесь в категории, посвященной медицине в нашем городе."
+        user_markup_medicine = telebot.types.ReplyKeyboardMarkup()
+        user_markup_medicine.row('Back' + u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_medicine)
 
-    elif message.text == "Инфраструктура":
-        user_markup3 = telebot.types.ReplyKeyboardMarkup(True, True)
-        user_markup3.row('Банки', 'Магазины')
-        user_markup3.row('Почта', 'Салоны красоты')
-        user_markup3.row('Жильё', 'Безопасность')
-        user_markup3.row('Вакансии', 'Мэрия')
-        user_markup3.row('Автомобилистам', "Back")
-        answer = "Вы находитесь в категории, посвященной инфраструктуре нашего современного города"
+    elif message.text == 'Еда' + u'\U0001F37D':
+        user_markup_food = telebot.types.ReplyKeyboardMarkup()
+        user_markup_food.row('Столовые', 'Кафе и бары')
+        user_markup_food.row('Продуктовые магазины')
+        user_markup_food.row('Back'+u'\U0001F519')
+        answer = "Вы находитесь в категории, посвященной питанию в нашем городе. \nВыберите следующую категорию"
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_food)
 
-        bot.send_message(message.from_user.id, answer, reply_markup=user_markup3)
-        log(message, answer)
+    elif message.text == 'Спорт' + u'\U0001f6b4':
+        answer = "Вы находитесь в категории, посвященной спорту в нашем городе."
+        user_markup_sports = telebot.types.ReplyKeyboardMarkup()
+        user_markup_sports.row('Back' + u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_sports)
 
-    elif message.text == "Back":
-        answer = "Обратно к основным категориям"
+    elif message.text == 'Развлечения' + u'\U0001f3a5':
+        answer = "Вы находитесь в категории, посвященной развлечениям в нашем городе."
+        user_markup_activities = telebot.types.ReplyKeyboardMarkup()
+        user_markup_activities.row('Back'+u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_activities)
 
-        bot.send_message(message.from_user.id, answer , reply_markup=user_markup)
-        log(message, answer)
+    elif message.text == 'Инфраструктура' + u'\U0001f3d9':
+        user_markup_infrastructure = telebot.types.ReplyKeyboardMarkup()
+        user_markup_infrastructure.row('Банки' + u'\U0001F4B0', 'Магазины' + u'\U0001F6D2')
+        user_markup_infrastructure.row('Почта' + u'\U0001F4EE', 'Салоны красоты' + u'\U0001F487')
+        user_markup_infrastructure.row('Жильё' + u'\U0001F3E1', 'Безопасность' + u'\U0001F46E')
+        user_markup_infrastructure.row('Вакансии' + u'\U0001F64B', 'Мэрия' + u'\U0001F3E2')
+        user_markup_infrastructure.row('Автомобилистам' + u'\U0001F697')
+        user_markup_infrastructure.row("Back" + u'\U0001f519')
+        answer = "Вы находитесь в категории, посвященной инфраструктуре нашего города Innopolis. \nВыберите следующую категорию"
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_infrastructure)
 
-    elif message.text == 'а':
-        answer = "Б"
-        bot.send_message(message.chat.id, answer)
-        log(message, answer)
+    elif message.text == 'Услуги' + u'\U0001f465':
+        answer = "Вы находитесь в категории, посвященной услугам в нашем городе."
+        user_markup_services = telebot.types.ReplyKeyboardMarkup()
+        user_markup_services.row('Back'+u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_services)
 
-    elif message.text == 'б':
-        answer = "B"
-        bot.send_message(message.chat.id, answer)
-        log(message, answer)
+    elif message.text == 'Кружки, секции, чаты' + u'\U0001f3a8':
+        answer = "Вы находитесь в категории, посвященной кружкам, секциям и чатам  в нашем городе."
+        user_markup_associations = telebot.types.ReplyKeyboardMarkup()
+        user_markup_associations.row('Back' + u'\U0001F519')
+        log(message, message.text)
+        bot.send_message(message.from_user.id, answer, reply_markup=user_markup_associations)
 
+    elif message.text == "Back" + u'\U0001f519':
+        handle_start(message)
+    # End of Main menu categories
 
-    elif message.text == 'в':
-        answer = "Ладно, ты победил. Игра окончена."
-        bot.send_message(message.chat.id, answer)
-        log(message, answer)
+    #elif message.text ==
 
-    else:
-        bot.send_message(message.chat.id, answer)
-        log(message, answer)
-
-
-#infinite loop
 bot.polling(none_stop=True, interval=0)
