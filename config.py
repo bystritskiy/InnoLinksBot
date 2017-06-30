@@ -39,15 +39,17 @@ func_dev_text = 'Функция находится в разработке'
 subcategories_with_inline = [
     'Автобусы',
     'Такси',
-    'Попутчики Иннополис',
+    'Чаты',
+
     'Кафе, бары, пиццерии',
     'Столовые',
     'Продуктовые магазины',
     'Заказ и доставка еды',
     'Прочее',
+
     'Медицинский центр',
-    'Аптека',
-    'Педиатр',
+    'Аптеки',
+
     'Банки',
     'Почта',
     'Жилье',
@@ -57,10 +59,11 @@ subcategories_with_inline = [
     'Автомобилистам',
     'Вакансии',
     'Салон красоты',
+
     'Спорткомплекс',
-    'Спортивные площадки',
-    'Прокат снаряжения',
-    'Спортивные секции',
+    'Прокат',
+    'Секции',
+
     'Детские школы, сады',
     'Связь, телевидение, интернет',
     'Одежда и аксессуары',
@@ -69,6 +72,7 @@ subcategories_with_inline = [
     'Правовые институты',
     'Жилье',
     'Полезная информация',
+
     'Активный отдых',
     'Отдых',
     'Лингвисты',
@@ -85,7 +89,7 @@ buttons = {
     'main': 'Главное ' + u'❗',
     'transport': 'Транспорт ' + u'🚌',
     'medicine': 'Медицина ' + u'🚑',
-    'food': 'Еда ' + u'🍽',
+    'food': 'Питание ' + u'🍽',
     'sport': 'Спорт ' + u'🚴',
     'activities': 'Развлечения ' + u'🎥',
     'infrastructure': 'Инфраструктура ' + u'🏙',
@@ -95,7 +99,7 @@ buttons = {
     # Transport
     'bus': 'Автобусы ' + u'🚎',
     'taxi': 'Такси ' + u'🚕',
-    'travel_companions': 'Попутчики Иннополис ' + u'👥',
+    'chats_transport': 'Чаты ' + u'👥',
 
     # Food
     'cafe': 'Кафе, бары, пиццерии ' + u'🍹',
@@ -105,9 +109,9 @@ buttons = {
     'other_food': 'Прочее ' + u'🍖',
 
     # Medicine
-    'med_centre': 'Медцентр ' + u'🏥',
+    'med_centre': 'Медицинский центр ' + u'🏥',
+    #'pharmacy': 'Back ' + u'🔙',
     'pharmacy': 'Аптека ' + u'💊',
-    'pediatrician': 'Педиатр ' + u'👨‍',
 
     # Infrastructure
     'banks': 'Банки ' + u'💰',
@@ -123,8 +127,8 @@ buttons = {
     # Sport
     'sport_center': 'Спорткомплекс ' + u'🏋',
     'playgrounds': 'Спортивные площадки ' + u'⛳',
-    'equipment_rental': 'Прокат снаряжения ' + u'🛴',
-    'sport_clubs': 'Спортивные секции ' + u'🤼',
+    'equipment_rental': 'Прокат ' + u'🛴',
+    'sport_clubs': 'Секции ' + u'🤼',
 
     # Main
     'InnoHelpBot': 'InnoHelpBot ' + u'ℹ',
@@ -178,12 +182,11 @@ def create_keyboards():
 
     # Transport keyboard
     transport_markup.row(buttons['bus'], buttons['taxi'])
-    transport_markup.row(buttons['travel_companions'])
+    transport_markup.row(buttons['chats_transport'])
     transport_markup.row(buttons['back'])
 
     # Medicine keyboard
     medicine_markup.row(buttons['med_centre'], buttons['pharmacy'])
-    medicine_markup.row(buttons['pediatrician'])
     medicine_markup.row(buttons['back'])
 
     # Food keyboard
@@ -193,7 +196,7 @@ def create_keyboards():
 
     # Sport keyboard
     sport_markup.row(buttons['sport_center'], buttons['equipment_rental'])
-    sport_markup.row(buttons['playgrounds'], buttons['sport_clubs'])
+    sport_markup.row(buttons['sport_clubs'])
     sport_markup.row(buttons['back'])
 
     # Infrastructure keyboard
