@@ -1,0 +1,104 @@
+.container{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	margin-left: -478px;
+	margin-top: -304px;
+}
+/*Стили для всех block titles*/
+.block_title{
+	position: relative;
+	top: 40px;
+	font-size: 24px;
+}
+/*стили для всех li тегов*/
+.content_items{
+	font-size: 15px;
+}
+/*Блок 1 и его содержимое*/
+.block1{
+	position: absolute;
+	width: 230px;
+	height: 300px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	text-align: center;
+}
+.block1_content{
+	position: relative;
+	top: 20%;
+	text-align: left;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-size: 17px;
+	text-align: center;
+}
+.b1_content_item1{
+}
+
+
+/*Блок 2 и его содержимое*/
+.block2{
+	position: absolute;
+	width: 630px;
+	height: 800px;
+	margin-left: 240px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	text-align: center;
+}
+.block2_content{
+	position: relative;
+	top: 10%;
+	text-align: left;
+	margin-left: 40px;
+	margin-right: 40px;
+	font-size: 18px;
+	text-align: center;
+}
+.b2_content_item1{
+
+}
+.b2_content_item2{
+	margin-top: 10px;
+}
+.b2_content_item3{
+	margin-top: 10px;
+}
+.b2_content_item4{
+	margin-top: 10px;
+}
+.b2_content_item5{
+	margin-top: 10px;
+}
+
+
+
+.myButton {
+	background-color:#ffffff;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:0px solid #000;
+	display:inline-block;
+	cursor:pointer;
+	color:#030003;
+	font-family:Arial;
+	font-size:19px;
+	font-weight:bold;
+	width: 230px;
+	height: 300px;
+	text-align: center;
+
+
+}
+.myButton:hover {
+	background-color:#adffc0;
+}
+.myButton:active {
+	position:absolute;
+	top:2px;
+}
+
+        

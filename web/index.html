@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>InnoLinksBot Редактор</title>
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	<script type="text/javascript">
+		function manage_cookie() {
+			document.getElementById('lab_name').innerHTML = getCookie('lab_name').replace("+", " ");
+			document.getElementById('professor_name').innerHTML = getCookie('user_name').replace("+", " ");
+		}
+		// возвращает cookie с именем name, если есть, если нет, то undefined
+		function getCookie(name) {
+			var matches = document.cookie.match(new RegExp(
+				"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+				));
+			return matches ? decodeURIComponent(matches[1]) : undefined;
+		}
+	</script>
+
+
+
+</head>
+<body onload="manage_cookie()">
+	
+	<div class="container">
+
+		<div class="block1">
+
+			<span class="block_title">Главное</span>
+
+			<ul class="block1_content">
+
+				<li  class="b1_content_item1 content_items"><b>Название:</b></li>
+
+				<li id="lab_name" class="b1_content_item1 content_items">##org_name##</li>
+				
+			</ul>
+
+		</div>	
+
+				<div class="block2">
+
+			<span class="block_title">Редактирование информации</span>
+
+			<ul class="block2_content">
+
+				<li  class="b2_content_item1 content_items"><b>Название:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Категория:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Подкатегория:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Описание:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Адрес:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Телефон:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Режим работы:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<li  class="b2_content_item1 content_items"><b>Сссылки:</b></li>
+
+				<p class="stud_note_1"><input class="stud_note" id="stud_note_1" name="stud_note_1" size="50" type="text"></p>
+
+				<input class="submit_bttn" name="submit" type="submit" value="Сохранить изменения" onclick="disable_inputs()">
+
+			</ul>
+
+		</div>	
+
+	</div>
+
+	<script src="libs/jquery-3.1.1.min.js"></script>
+	<script src="js/core.js"></script>
+</body>
+</html>

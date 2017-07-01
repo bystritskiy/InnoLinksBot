@@ -1,0 +1,38 @@
+﻿
+/*Стили для всех block titles*/
+.block_title{
+	position: relative;
+	top: 40px;
+	font-size: 24px;
+}
+/*стили для всех li тегов*/
+.content_items{
+	font-size: 15px;
+}
+/*Блок 1 и его содержимое*/
+.block1{
+	position: absolute;
+	margin-left: 478px;
+	margin-top: 60px;
+	width: 430px;
+	min-height: 200px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+.block1_content{
+	position: relative;
+	top: 30%;
+	text-align: left;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-size: 20px;
+	text-align: center;
+}
+.b1_content_item1{
+margin-top: 10px;
+}
+
+
+}
